@@ -16,6 +16,9 @@ start:
     mov ds, ax
 
 innit:
+    lea dx, newline
+    call read
+
     lea dx, prompt1
     call read
 
@@ -70,12 +73,11 @@ done_check:
     call read
     lea dx, prompt_continue
     call read
-
     mov ah, 01h
     int 21h
     cmp al, 'y'
     je innit
-    
+
     mov ah, 4Ch
     int 21h
 end start
